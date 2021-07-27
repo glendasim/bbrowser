@@ -1,0 +1,35 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/reviews']">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Manage Reviews</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="myForm">
+    <!-- For Input of Name -->
+    <ion-item>
+      <ion-label position="floating">Book</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <!-- Input of Review -->
+    <ion-item>
+      <ion-label position="floating">Review</ion-label>
+      <ion-input type="review" formControlName="reviews"></ion-input>
+    </ion-item>
+
+    <!-- Button to update or delete -->
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="update()">Update</ion-button>
+        <ion-button (click)="delete()">Delete</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+</ion-content>

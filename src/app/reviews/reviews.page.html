@@ -1,0 +1,23 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>reviews</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="addReview()"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item button *ngFor="let user of users" [routerLink]="['/review-details', user.id]">
+      <ion-label>
+        <h3> {{user.name | uppercase}}</h3>
+        - {{user.review}}
+      </ion-label>
+      <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
+    </ion-item>
+  </ion-list>
+</ion-content>

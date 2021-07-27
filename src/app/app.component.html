@@ -1,3 +1,28 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-menu side="start" contentId="main" menuId="main">
+    <!-- Header Section -->
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>
+          Glenda Sim
+        </ion-title>
+        <ion-title>
+          <ion-note>glendaSim@gmail.com</ion-note>
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+  
+
+<ion-content>
+  <ion-item lines="none" [routerLink]="['tabs/tab1']" routerLinkActive="bold"><ion-icon name="home-outline" slot="start"></ion-icon>Home</ion-item>
+  <ion-item lines="none" [routerLink]="['tabs/tab2']" routerLinkActive="bold"><ion-icon name="search" slot="start"></ion-icon>Search</ion-item>
+  <ion-item lines="none" [routerLink]="['tabs/tab3']" routerLinkActive="bold"><ion-icon name="heart" slot="start"></ion-icon>Favourites</ion-item>
+  <ion-item lines="none" [routerLink]="['tabs/tab4']" routerLinkActive="bold"><ion-icon name="person" slot="start"></ion-icon>Profile</ion-item>
+  <ion-item lines="none" (click)="userLogout()"><ion-icon name="log-out-outline" slot="start"></ion-icon>Log Out</ion-item>
+
+</ion-content>
+
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>
