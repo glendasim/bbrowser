@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { FirestoreService } from '../firestore.service';
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +8,23 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  userid;
+  listBooks = []
 
-  constructor() {}
 
+  constructor(private auth: AuthService,
+              private fireData: FirestoreService) {
+    this.auth.getAuthState().then(e => {
+      this.userid = e
+    })
+  }
+
+  ngOnInit() {
+    this.fireData.getBooks().subscribe(data => {
+      console.log(data)
+      this.listBooks = data;
+    })
+
+ 
+  }
 }

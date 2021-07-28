@@ -4,33 +4,44 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      Search
+      Search Books
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-searchbar placeholder="Search"
-                    [(ngModel)]="queryText"
+  (ionInput)="getItems($event)"
                     >
       </ion-searchbar>
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Search Books</ion-title>
     </ion-toolbar>
   </ion-header>
 
 
+  <ion-list>
+    <ion-item button *ngFor="let b of bookRender" routerLink="/book-details/{{b.bookId}}">
+      <ion-thumbnail slot="start">
+        <img [src]="b.picture">
+      </ion-thumbnail>
+      <ion-label>{{b.title}}
+        <p>{{b.author}}</p>
+      </ion-label>
+   
+    </ion-item>
+  </ion-list>
 
-  <ion-card @fadein id="card-list" routerLink="/c-details/{{info.key}}" *ngFor="let info of coursesList">
+  <!-- <ion-card id="card-list" routerLink="/book-details/{{b.Field}}" *ngFor="let b of bookRender"> -->
     <!-- <p>{{info.key}}</p> -->
-    <ion-card-content>
+    <!-- <ion-card-content>
       <div [style.backgroundColor]="info.color" id="circle">
         <h5 [style.color]="info.colortxt">{{ info.code }}</h5>
       </div>
       <h5 id="name">{{ info.name }}</h5>
       <ion-icon size="small" name="arrow-forward"></ion-icon>
     </ion-card-content>
-  </ion-card> 
+  </ion-card>  -->
   
 </ion-content>

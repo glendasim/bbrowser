@@ -8,18 +8,25 @@ import { AuthService } from './auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+  constructor(
+    private menuController: MenuController,
+    private authService: AuthService
+  ) {
+    this.authService.getAuthInfo().then(e => {
+      console.log(e)
+    })
+  }
+  
 
-  constructor(private menuController : MenuController,
-    private authService: AuthService) {}
-  close() 
-  {
-    this.menuController.close("main")
+
+  close() {
+    this.menuController.close('main');
   }
 
-      //User the auth service logout function
-      userLogout(){
-        return this.authService.logout();
-      }
-
-
+  //User the auth service logout function
+  userLogout() {
+    return this.authService.logout().then(e => {
+      this.close()
+    });
+  }
 }

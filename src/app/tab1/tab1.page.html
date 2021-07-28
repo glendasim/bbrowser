@@ -10,8 +10,22 @@
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let d of listBooks" size="6">
+        <ion-card button routerLink="/book-details/{{d.bookId}}">
+          <img [src]="d.picture"/>
+          <ion-card-header>
+            <ion-card-title style="font-size:initial;">{{d.title}}</ion-card-title>
+            <ion-card-subtitle>{{d.author}}</ion-card-subtitle>
+          </ion-card-header>
 
-  <ion-card>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- <ion-card>
     <img  width="300" height="400" src="./assets/The_Fault_in_Our_Stars.jpg"/>
     <ion-card-header>
       <ion-card-subtitle> John Green </ion-card-subtitle>
@@ -65,7 +79,7 @@
     <ion-item-group>
       <ion-item *ngFor="let item of " routerLink="/detailscca/{{item.key}}" detail>{{item.name}}</ion-item>
     </ion-item-group>
-  </ion-list>
+  </ion-list> -->
 
 </ion-content>
  
