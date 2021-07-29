@@ -36,7 +36,7 @@ export class BookDetailsPage implements OnInit {
   checkFavStatus() {
     this.auth.getAuthState().then(e => {
       this.user = e
-      this.fire.getFav(e).subscribe((data: any) => {
+      this.fire.getUserProf(e).subscribe((data: any) => {
         let find = data.data().favourites
         var found = find.find(x => x === this.id)
         if (found) {
@@ -67,7 +67,10 @@ export class BookDetailsPage implements OnInit {
   async reviewModal() {
     const modal = await this.modalController.create({
       component: ReviewPage,
-      cssClass: 'my-custom-class'
+      cssClass: 'my-custom-class',
+      componentProps: {
+        bookId: this.id
+      }
     });
 
     modal.onDidDismiss()
