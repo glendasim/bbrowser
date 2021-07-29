@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
 {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'landing-page',
     pathMatch: 'full'
   },
   {
@@ -27,10 +27,20 @@ const routes: Routes = [
   {
     path: 'book-details/:id',
     loadChildren: () => import('./book-details/book-details.module').then( m => m.BookDetailsPageModule)
-  },  {
+  },
+  {
     path: 'review',
     loadChildren: () => import('./modals/review/review.module').then( m => m.ReviewPageModule)
   },
+  {
+    path: 'landing-page',
+    loadChildren: () => import('./landing-page/landing-page.module').then( m => m.LandingPagePageModule)
+  },  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  }
+
+
 
 
 

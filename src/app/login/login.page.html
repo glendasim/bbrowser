@@ -1,11 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Login/Register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="myForm">
+  <form [formGroup]="myForm" class="inputs">
     <!-- Input for email -->
     <ion-item>
       <ion-label position="floating">Email</ion-label>
@@ -19,11 +22,19 @@
     <!-- Add two button for login and register -->
     <ion-row>
       <ion-col>
-        <ion-button (click)="register()">Register</ion-button>
-        <ion-button (click)="login()">Login</ion-button>
+        <!-- <ion-button (click)="register()">Register</ion-button> -->
+        <!-- <ion-button (click)="login()">Login</ion-button> -->
       </ion-col>
     </ion-row>
 
+
   </form>
 
+  <div class="new-user">
+    <p>New user? <a routerLink="/register">Register Now</a></p>
+  </div>
+
+  <div id="button-login">
+    <ion-button (click)="login()" expand="block">Login</ion-button>
+  </div>
 </ion-content>

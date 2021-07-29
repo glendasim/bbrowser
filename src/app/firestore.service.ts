@@ -51,6 +51,7 @@ export class FirestoreService {
           id_book: bookId,
           user_id: user.uid,
           username: username,
+          isEdited: false
         })
         .then((e) => {
           resolve(true);
@@ -80,6 +81,7 @@ export class FirestoreService {
       .doc(reviewId)
       .update({
         comment: comment,
+        isEdited: true
       })
       .then((e) => {
         this.toast.presentToast('Review Updated!');

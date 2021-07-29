@@ -5,6 +5,7 @@ import {
   AlertController,
   ModalController,
 } from '@ionic/angular';
+import * as moment from 'moment';
 import { AuthService } from '../auth.service';
 import { FirestoreService } from '../firestore.service';
 import { ReviewPage } from '../modals/review/review.page';
@@ -164,5 +165,9 @@ export class BookDetailsPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  convertDate(date) {
+    return moment(date.toDate()).startOf("seconds").fromNow()
   }
 }

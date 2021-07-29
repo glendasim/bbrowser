@@ -3,6 +3,7 @@ import { ToastController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { ToastService } from './toast.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root',
@@ -12,18 +13,24 @@ export class AuthService {
     private fireAuth: AngularFireAuth,
     private toastController: ToastController,
     private router: Router,
-    private toast: ToastService
+    private toast: ToastService,
+    private fire: AngularFirestore
   ) {}
 
   //CREATE REGISTER FUNC
-  register(email, password) {
+  register(username, email, password) {
     return this.fireAuth
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         this.toast.presentToast("Successfully registered!")
-        this.router.navigate(['/login']);
+        this.router.navigate(['//tabs/tab1']);
+        this.fireAuth.onAuthStateChanged(e => {
+          this.updateUsername(e, username)
+        })
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error)
+      });
   }
 
   // Create Login Function
@@ -63,4 +70,8 @@ export class AuthService {
     })
   }
 
+
+  updateUsername(user, username) {
+    return this.fire.collection('users').doc(user.uid).set({username:username})
+  }
 }

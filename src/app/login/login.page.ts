@@ -28,10 +28,6 @@ export class LoginPage implements OnInit {
         this.authService.login(this.myForm.value.email, this.myForm.value.password);
       }
     
-      //Use the register function in the auth service
-      register(){
-        this.authService.register(this.myForm.value.email, this.myForm.value.password);
-      }
-    
+ 
     }
     

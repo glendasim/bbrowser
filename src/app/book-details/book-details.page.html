@@ -62,12 +62,16 @@
     <ion-card-content class="review-content">
       {{i.comment}}
     </ion-card-content>
+
+    <div id="date-label">
+      <label>{{i.isEdited ? 'Edited' : ''}} {{i.isEdited ? '•' : ''}} {{convertDate(i.date_time)}}</label>
+    </div>
   </ion-card>
 
 
 </ion-item-group>
 
-
+<div id="space"></div>
 
 <ion-fab vertical="bottom" horizontal="end" slot="fixed">
   <ion-fab-button (click)="reviewModal('', false)">

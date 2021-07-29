@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavigationEnd, ResolveEnd, Router } from '@angular/router';
 import { NavController, Platform } from '@ionic/angular';
+import * as moment from 'moment';
 import { AuthService } from '../auth.service';
 import { FirestoreService } from '../firestore.service';
 
@@ -21,7 +22,7 @@ export class Tab3Page {
     private navCtrl: NavController,
     private route: Router
   ) {
-    
+    moment().format
   }
   routerWatch() {
     this.routerSubs = this.route.events.subscribe((event: ResolveEnd) => {
@@ -45,7 +46,7 @@ export class Tab3Page {
       this.fireData.getUserFav(e).subscribe((e: any) => {
         let data = e.data().favourites;
         console.log(e.data().favourites);
-        if (data.length > 0) {
+        if (data && data.length > 0) {
           this.fireData.getFavsList(data).subscribe((e) => {
             this.listBooks = e;
           })
