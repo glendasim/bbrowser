@@ -17,4 +17,20 @@
   </ion-header>
 
 
+
+  <div *ngIf="listBooks.length === 0" class="banner-favourites">
+    <h4>Start to find your favourite book!</h4>
+  </div>
+
+  <ion-list>
+    <ion-item button *ngFor="let b of listBooks" routerLink="/book-details/{{b.favId}}">
+      <ion-thumbnail slot="start" id="fav-thumbnail">
+        <img [src]="b.picture">
+      </ion-thumbnail>
+      <ion-label>{{b.title}}
+        <p>{{b.author}}</p>
+      </ion-label>
+  
+    </ion-item>
+  </ion-list>
 </ion-content>

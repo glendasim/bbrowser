@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Review</ion-title>
+    <ion-title>{{isEdit ? 'Edit Review' : 'Review'}}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">Close</ion-button>
     </ion-buttons>
@@ -10,11 +10,16 @@
 <ion-content>
   <ion-item>
     <ion-label position="stacked" >Review</ion-label>
-    <ion-textarea (ionInput)="review($event)" rows="6" cols="20" placeholder="write a review..."></ion-textarea>
+    <ion-textarea [(ngModel)]="reviewWord" rows="6" cols="20" [value]="reviewWord" placeholder="write a review..."></ion-textarea>
   </ion-item>
 
 
-  <div class="submit-button">
+  <div class="submit-button" *ngIf="!isEdit">
     <ion-button color="primary" expand="block" [disabled]="reviewWord ? false : true" (click)="submit()">Submit</ion-button>
   </div>
+
+  <div class="submit-button" *ngIf="isEdit">
+    <ion-button color="primary" expand="block" [disabled]="reviewWord ? false : true" (click)="saveReview()">Save Review</ion-button>
+  </div>
+
 </ion-content>

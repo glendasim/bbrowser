@@ -12,7 +12,12 @@ import { ToastService } from 'src/app/toast.service';
 export class ReviewPage implements OnInit {
   user
   reviewWord = ""
+
   bookId;
+  reviewId;
+  reviewEdit = ""
+  isEdit = false
+
   constructor(public modal: ModalController,
               private toast: ToastService,
               private navParams: NavParams,
@@ -22,15 +27,19 @@ export class ReviewPage implements OnInit {
             ) { 
               
               this.bookId = this.navParams.get('bookId')
+
+              if (this.navParams.get('review') != '') {
+                this.reviewWord = this.navParams.get('review')
+                this.reviewId = this.navParams.get('reviewId')
+              }
               
+              this.isEdit = this.navParams.get('isEdit')
+
               this.auth.getAuthInfo().then(e => {
-                
                 this.fire.getUserProf(e).subscribe(e => {
                   this.user = e
                 })
-
               })
-  
             }
 
   ngOnInit() {
@@ -41,12 +50,13 @@ export class ReviewPage implements OnInit {
   }
 
   review(event) {
-    this.reviewWord = event.srcElement.value.trim()
-    console.log(event.srcElement.value)
+    console.log(event)
+    // this.reviewWord = event.srcElement.value.trim()
+    
   }
 
   submit() {
-    console.log(  this.bookId)
+    console.log(this.bookId)
     if (this.reviewWord != "") {
       // send back review words
       this.fire.submitReview(this.bookId, this.reviewWord, this.user, this.user.username).then(e => {
@@ -60,5 +70,16 @@ export class ReviewPage implements OnInit {
       this.toast.presentToast("Review cannot be empty!")
     }
     
+  }
+
+  saveReview() {
+    console.log(this.reviewWord)
+    if (this.reviewWord != "") {
+      this.fire.updateReview(this.reviewId, this.reviewWord).then(e => {
+        this.modal.dismiss()
+      })
+    } else {
+      this.toast.presentToast("Review cannot be empty!")
+    }
   }
 } 

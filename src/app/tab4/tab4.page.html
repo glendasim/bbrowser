@@ -8,24 +8,27 @@
 </ion-header>
 
 <ion-content>
-  <img src="../assets/fake_person.jpg" width="300" height="300" class="center" *ngIf = "usercurrentimage == null">
-  <img src="{{usercurrentimage}}" class="center" *ngIf = "usercurrentimage != null">
+
+  <ion-card >
+
+    <div class="header-profile">
+      <ion-avatar >
+        <img src="../../assets/avatar_user.png">
+      </ion-avatar>
+    </div>
+
+    <ion-card-content class="profile-content">
+      <p>{{username}}</p>
+      <p>{{authObj.email}}</p>
+    </ion-card-content>
+
+ 
+  </ion-card>
+
   <!-- <ion-button (click) = "uploadtype()">Upload Image</ion-button> -->
 
-  <div>
-    <p class="heading-1">Name :</p>
-    <p class="subheading">{{user.name ? user.name : ""}}</p>
-    <p class="heading">Email :</p>
-    <p class="subheading">{{user.email ? user.email : ""}}</p>
-    <!-- <p>Password: {{userPass}}</p> -->
-    <p class="heading">How many Books You have read : </p>
-    <p class="subheading">{{useramtofbooks}}</p>
-    <p class="heading">Favourites :</p>
-    <p class="subheading">{{userfavourites}}</p>
-    
-  </div>
 
-  <ion-list>
+  <!-- <ion-list>
     <ion-item button *ngFor="let user of users" [routerLink]="['/contact-details', user.id]">
       <ion-label>
         <h3> {{user.name | uppercase}}</h3>
@@ -33,6 +36,6 @@
       </ion-label>
       <ion-icon slot="end" name="caret-forward-outline"></ion-icon>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
   
 </ion-content>
