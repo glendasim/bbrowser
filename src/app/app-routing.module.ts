@@ -42,6 +42,18 @@ const routes: Routes = [
   {
     path: 'feedback',
     loadChildren: () => import('./feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'edit-profile',
+    loadChildren: () => import('./edit-profile/edit-profile.module').then( m => m.EditProfilePageModule)
+  },
+  {
+    path: 'change-info-profile',
+    loadChildren: () => import('./modals/change-info-profile/change-info-profile.module').then( m => m.ChangeInfoProfilePageModule)
+  },
+  {
+    path: 'forget-password',
+    loadChildren: () => import('./forget-password/forget-password.module').then( m => m.ForgetPasswordPageModule)
   }
 
 

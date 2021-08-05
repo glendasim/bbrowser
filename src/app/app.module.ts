@@ -12,6 +12,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { ReviewPageModule } from './modals/review/review.module';
+import { ChangeInfoProfilePageModule } from './modals/change-info-profile/change-info-profile.module';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReviewPageModule } from './modals/review/review.module';
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, 
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, 
-    ReviewPageModule
+    ReviewPageModule,
+    ChangeInfoProfilePageModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

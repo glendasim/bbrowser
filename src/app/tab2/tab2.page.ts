@@ -16,7 +16,7 @@ export class Tab2Page {
 
 
   ngOnInit() {
-    this.fire.getBooks().subscribe(data => {
+    this.fire.getBooks(false).subscribe(data => {
       this.bookRender = data
       this.loadedBooks = data
     })

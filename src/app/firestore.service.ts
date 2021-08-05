@@ -8,7 +8,10 @@ import firebase from 'firebase/app';
 export class FirestoreService {
   constructor(private fire: AngularFirestore, private toast: ToastService) {}
 
-  getBooks() {
+  getBooks(is_topPick) {
+    if (is_topPick) {
+      return this.fire.collection('books', d => d.where('is_trending', '==', true)).valueChanges({ idField: 'bookId' });
+    }
     return this.fire.collection('books').valueChanges({ idField: 'bookId' });
   }
 
@@ -152,4 +155,11 @@ export class FirestoreService {
       });
     });
   }
+
+
+
+  updateUsername(user ,username) {
+    return this.fire.collection('users').doc(user.uid).update({username: username});
+  }
+
 }

@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{pageTitle}}</ion-title>
+
+    <ion-buttons slot="end" (click)="exitModal()">
+      <ion-button>
+        Cancel
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div *ngIf="view === 'username'">
+    <ion-item>
+      <ion-label position="stacked">Enter new username</ion-label>
+      <ion-input maxlength="20" [(ngModel)]="username" type="text"></ion-input>
+    </ion-item>
+    
+  </div>
+
+  <div *ngIf="view === 'email'">
+    <ion-item>
+      <ion-label position="stacked">Enter new Email</ion-label>
+      <ion-input  [(ngModel)]="email" type="email"></ion-input>
+    </ion-item>
+    
+  </div>
+
+  
+  <div *ngIf="view === 'password'">
+    <ion-item>
+      <ion-label position="stacked">Enter new Password</ion-label>
+      <ion-input  [(ngModel)]="password" type="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Enter new Confirm Password</ion-label>
+      <ion-input  [(ngModel)]="password1" type="password"></ion-input>
+    </ion-item>
+  </div>
+
+
+
+
+  <div class="submit-butt">
+    <ion-button expand="block" (click)="submit()">
+      Save
+    </ion-button>
+  </div>
+</ion-content>

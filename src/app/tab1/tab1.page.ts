@@ -20,7 +20,7 @@ export class Tab1Page {
   }
 
   ngOnInit() {
-    this.fireData.getBooks().subscribe(data => {
+    this.fireData.getBooks(true).subscribe(data => {
       console.log(data)
       this.listBooks = data;
     })

@@ -5,6 +5,10 @@ import { Router } from '@angular/router';
 import { ToastService } from './toast.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+export interface sendEmail {
+  email: string
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -52,7 +56,7 @@ export class AuthService {
   logout() {
     return this.fireAuth.signOut().then(() => {
       this.toast.presentToast("Sign Out Successfully!")
-      this.router.navigate(['/login']);
+      this.router.navigate(['/landing-page']);
     });
   }
 
@@ -73,5 +77,20 @@ export class AuthService {
 
   updateUsername(user, username) {
     return this.fire.collection('users').doc(user.uid).set({username:username})
+  }
+
+  fireSendEmail(sendMail: sendEmail) {
+    return new Promise((resolve, reject) => {
+      this.fireAuth.sendPasswordResetEmail(sendMail.email)
+        .then((res) => {
+          resolve(res)
+          this.toast.presentToast("Check your email")
+        }).catch((err) => {
+          reject(err)
+          if (err.code == "auth/user-not-found") {
+            this.toast.presentToast("Invalid user")
+          }
+        })
+    })
   }
 }
