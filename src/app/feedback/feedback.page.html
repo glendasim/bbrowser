@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>feedback</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]= "myForm" >
+    
+
+    <ion-item>
+      <ion-label position="floating">Name<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Gender<ion-text color="danger">*</ion-text></ion-label>
+      <ion-select formControlName="gender">
+        <ion-select-option>Female</ion-select-option>
+        <ion-select-option>Male</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Email Address<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Mobile No.</ion-label>
+      <ion-input type="text" formControlName="mobile"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Address</ion-label>
+      <ion-input type="text" formControlName="address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Feedback<ion-text color="danger">*</ion-text></ion-label>
+      <ion-textarea formControlName="feedback"></ion-textarea>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="summary()">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+</ion-content>
+
+
