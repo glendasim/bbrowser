@@ -162,4 +162,8 @@ export class FirestoreService {
     return this.fire.collection('users').doc(user.uid).update({username: username});
   }
 
+  setFeedback(feedback) {
+    return this.fire.collection('feedback').add(feedback);
+  }
+
 }

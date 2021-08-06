@@ -19,16 +19,22 @@
 <ion-content>
 <div class="bookContainer">
   <img id="bookImg" [src]="book.picture">
-
-
 </div>
 
-<ion-card>
+<div class="nav-map">
+  <ion-button fill="outline" color="secondary" routerLink="/map-store">
+    <ion-icon name="locate-outline"></ion-icon>
+    Find Store
+  </ion-button>
+</div>
+
+<ion-card style="margin-top: 10px !important;">
   <ion-card-header>
     <ion-card-title>{{book.title}}</ion-card-title>
     <ion-card-subtitle>by {{book.author}}</ion-card-subtitle>
   </ion-card-header>
 </ion-card>
+
 
 <ion-card>
 
@@ -37,7 +43,6 @@
     {{book.description}}
   </ion-card-content>
 </ion-card>
-
 
 
 <!-- REVIEWS -->

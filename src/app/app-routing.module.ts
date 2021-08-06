@@ -54,6 +54,10 @@ const routes: Routes = [
   {
     path: 'forget-password',
     loadChildren: () => import('./forget-password/forget-password.module').then( m => m.ForgetPasswordPageModule)
+  },
+  {
+    path: 'map-store',
+    loadChildren: () => import('./map-store/map-store.module').then( m => m.MapStorePageModule)
   }
 
 

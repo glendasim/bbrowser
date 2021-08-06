@@ -20,4 +20,7 @@ export class MenuItemComponent implements OnInit {
   logout() {
     this.popOver.dismiss({nav: 'logout'})
   }
+  feedback() {
+    this.popOver.dismiss({page: 'feedback'})
+  }
 }
