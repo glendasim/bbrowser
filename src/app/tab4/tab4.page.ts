@@ -51,7 +51,7 @@ export class Tab4Page implements OnInit {
       if (nav && nav.page) {
         this.navCtrl.navigateForward(nav.page)
       } 
-      if (nav && nav.logout) {
+      if (nav && nav.nav === 'logout') {
         this.auth.logout()
       }
     })

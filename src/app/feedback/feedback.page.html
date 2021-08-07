@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+      <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>feedback</ion-title>
+    <ion-title>Feedback</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -44,7 +44,7 @@
       <ion-textarea formControlName="feedback"></ion-textarea>
     </ion-item>
 
-    <div class="button">
+    <div class="button-nav">
       <ion-button expand="block" [disabled]="!myForm.valid" (click)="submit()">Submit</ion-button>
     </div>
         
